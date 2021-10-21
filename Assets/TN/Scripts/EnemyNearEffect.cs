@@ -13,14 +13,16 @@ public class EnemyNearEffect : MonoBehaviour
 
 
     public Grain grainLayer = null;
-    public ChromaticAberration ChomaLayer = null;
+    public ChromaticAberration ChromaLayer = null;
 
     public PostProcessProfile pFile = null;
 
     private void Start()
     {
         grainLayer = pFile.GetSetting<Grain>();
-        ChomaLayer = pFile.GetSetting<ChromaticAberration>();
+        ChromaLayer = pFile.GetSetting<ChromaticAberration>();
+        grainLayer.intensity.value = 0;
+        ChromaLayer.intensity.value = 0;
     }
 
     private void Update()
@@ -30,10 +32,11 @@ public class EnemyNearEffect : MonoBehaviour
         if (dist < maxRange)
         {
             //ChomaLayer.enabled.value = true;
-            ChomaLayer.intensity.value = Mathf.Lerp(1, 0, dist / maxRange);
+            ChromaLayer.intensity.value = Mathf.Lerp(1, 0, dist / maxRange);
 
             //grainLayer.enabled.value = true;
             grainLayer.intensity.value = Mathf.Lerp(1, 0, dist/maxRange);
         }
+
     }
 }
