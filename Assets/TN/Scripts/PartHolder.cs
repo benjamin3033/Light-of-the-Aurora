@@ -7,9 +7,15 @@ public class PartHolder : MonoBehaviour
 {
     public GameManager manager;
 
+    public EnemyNearEffect Enemynear;
+
     public Text partsText;
 
     public int Parts = 0;
+
+    public GameObject Beam = null;
+
+    public GameObject Enemy = null;
 
     [SerializeField] private List<Parts.PartNum> partList;
 
@@ -58,6 +64,11 @@ public class PartHolder : MonoBehaviour
         if (collider.tag == "EndTrigger" && partList.Count >= 5)
         {
             collider.GetComponent<PartCompleate>().StartAuraua();
+            Beam.SetActive(true);
+            Enemy.SetActive(false);
+
+            Enemynear.grainLayer.intensity.value = 0;
+            Enemynear.ChromaLayer.intensity.value = 0;
         }
 
         if (collider.tag == "Enemy")

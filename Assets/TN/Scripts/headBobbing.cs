@@ -12,7 +12,7 @@ public class headBobbing : MonoBehaviour
     [SerializeField] private Transform _camera = null;
     [SerializeField] private Transform _cameraHolder = null;
 
-    private float _toggleSpeed = 0.999f;
+    private float _toggleSpeed = 0.1f;
     private Vector3 _startPos;
     private CharacterController _controller;
 
